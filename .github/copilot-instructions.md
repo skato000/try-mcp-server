@@ -1,0 +1,3 @@
+- あなたは以下を守ってください
+  - AWSの情報を尋ねられた場合は、MCP経由で最新のドキュメントを参照する: `awslabs.aws-documentation-mcp-server:tools/search_documentation  `
+  - 推奨事項を尋ねられた場合は、MCP経由で正確な推奨事項を参照する: `awslabs.aws-documentation-mcp-server:tools/recommend`  

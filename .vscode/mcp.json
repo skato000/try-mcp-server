@@ -1,0 +1,101 @@
+{
+  // MCP Server Configuration
+  // https://code.visualstudio.com/docs/copilot/chat/mcp-servers
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "github_token",
+      "description": "GitHub Personal Access Token",
+      "password": true,
+    },
+  ],
+  "servers": {
+    "github": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${input:github_token}"
+      }
+    },
+    "awslabs.core-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.core-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+    },
+    "awslabs.aws-documentation-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-documentation-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+    },
+    "awslabs.aws-diagram-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-diagram-mcp-server"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+    },
+    // "awslabs.bedrock-kb-retrieval-mcp-server": {
+    //   "command": "uvx",
+    //   "args": [
+    //     "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+    //   ],
+    //   "env": {
+    //     "AWS_PROFILE": "${env:AWS_PROFILE}}",
+    //     "FASTMCP_LOG_LEVEL": "ERROR",
+    //     "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs"
+    //   },
+    //   "autoApprove": []
+    // },
+    // ref. https://github.com/awslabs/mcp/issues/148#issuecomment-2840094582
+    // "awslabs.nova-canvas-mcp-server": {
+    //   "command": "uvx",
+    //   "args": [
+    //     "awslabs.nova-canvas-mcp-server@latest"
+    //   ],
+    //   "env": {
+    //     "AWS_PROFILE": "${env:AWS_PROFILE}}",
+    //     "AWS_REGION": "ap-northeast-1",
+    //     "FASTMCP_LOG_LEVEL": "ERROR"
+    //   },
+    // },
+    // "awslabs.cost-analysis-mcp-server": {
+    //   "command": "uvx",
+    //   "args": [
+    //     "awslabs.cost-analysis-mcp-server@latest"
+    //   ],
+    //   "env": {
+    //     "FASTMCP_LOG_LEVEL": "ERROR",
+    //     "AWS_PROFILE": "${env:AWS_PROFILE}}",
+    //   },
+    // },
+    // "awslabs.nova-canvas-mcp-server": {
+    //   "command": "uvx",
+    //   "args": [
+    //     "awslabs.nova-canvas-mcp-server@latest"
+    //   ],
+    //   "env": {
+    //     "AWS_PROFILE": "aws-mcp",
+    //     "AWS_REGION": "ap-northeast-1",
+    //     "FASTMCP_LOG_LEVEL": "ERROR"
+    //   },
+    //   "disabled": true,
+    // }
+  }
+}

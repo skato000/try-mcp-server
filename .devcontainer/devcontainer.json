@@ -1,0 +1,40 @@
+{
+	"name": "try-mcp",
+	"image": "mcr.microsoft.com/vscode/devcontainers/base:bookworm",
+	"containerEnv": {
+		"TZ": "Asia/Tokyo",
+		"AWS_PROFILE": "aws-mcp",
+	},
+	"remoteUser": "vscode",
+	"remoteEnv": {},
+	// "runArgs": [
+	// 	"--env-file",
+	// 	".env.local"
+	// ],
+	"mounts": [
+		"type=bind,source=${env:HOME}${env:USERPROFILE}/.aws,target=/home/vscode/.aws"
+	],
+	"features": {
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"editor.renderWhitespace": "all",
+				"editor.formatOnSave": true,
+			},
+			"extensions": [
+				"bierner.markdown-preview-github-styles",
+				"bierner.markdown-mermaid",
+				"bpruitt-goddard.mermaid-markdown-syntax-highlighting",
+				"streetsidesoftware.code-spell-checker",
+				"GitHub.copilot",
+				"GitHub.copilot-chat",
+				"ms-ceintl.vscode-language-pack-ja",
+				"yzhang.markdown-all-in-one"
+			]
+		}
+	},
+	"postCreateCommand": "/bin/bash .devcontainer/postCreateCommand.sh"
+}
